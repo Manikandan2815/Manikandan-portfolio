@@ -1,0 +1,256 @@
+/* ==========================================================================
+   Manikandan.R — Global Stylesheet & Design System
+   Phase 1 Foundation: CSS variables, Typography utilities, Global Textures
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&family=Fira+Code:wght@400;500;700&display=swap');
+
+/* CSS Custom Properties */
+:root {
+  --background: #0A0A0A;
+  --surface: #141414;
+  --surface-hover: #1E1E1E;
+  --text-primary: #F5F5F5;
+  --text-secondary: #9A9A9A;
+  --accent: #39FF14;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-accent: rgba(57, 255, 20, 0.2);
+  --max-width: 1280px;
+}
+
+/* General Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface) var(--background);
+}
+
+html {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis smooth scrolling layout overrides to prevent scroll fights */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--background);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle Film Grain Noise Canvas Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Light Technical Dot Grid Background Pattern */
+.dot-grid {
+  position: fixed;
+  inset: 0;
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Typography Utility Mappings */
+.display-hero {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 7.5vw, 8rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+.display-xl {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.display-lg {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.heading {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.caption-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.meta-code {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar (Webkit supported browsers) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface);
+  border-radius: 0px;
+  border: 1px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Custom selection highlights */
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Hover tooltips sizing adjust */
+.skill-item:hover .skill-tooltip {
+  display: block;
+}
+
+/* Cinematic Hero Portrait CSS Masking & Editorial Treatment */
+.hero-portrait {
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  width: 32vw;
+  max-width: 440px;
+  height: 65vh;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(100%) contrast(1.1) brightness(0.85);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 92%), linear-gradient(to left, black 45%, transparent 95%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 92%), linear-gradient(to left, black 45%, transparent 95%);
+  pointer-events: none;
+  z-index: 1; /* Sits behind the text layers */
+}
+
+/* Ensure Hero Text containers sit above the portrait overlay */
+.hero-badge-container,
+.hero-name-container,
+.hero-title-container,
+.hero-statement,
+.hero-desc-container {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto; /* Keeps text selectable */
+}
+
+/* Cinematic About Portrait Layout styling */
+.about-portrait-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.about-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(100%) contrast(1.2) brightness(0.9);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-portrait-container:hover .about-portrait {
+  transform: scale(1.03);
+}
+
+@media (max-width: 1023px) {
+  .hero-portrait {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    max-width: 340px;
+    height: 320px;
+    margin: 2.5rem auto 1.5rem 0;
+    object-fit: cover;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    display: block;
+    z-index: 2;
+  }
+}
+
+/* Accessibility / Reduced Motion overrides */
+@media (prefers-reduced-motion: reduce), .prefers-reduced-motion {
+  * {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    transition-delay: -1ms !important;
+  }
+}
+
+/* Hide default cursor on desktop when cinematic cursor is active */
+@media (min-width: 1024px) {
+  @media (prefers-reduced-motion: no-preference) {
+    body, a, button, [data-cursor], .explore-preview {
+      cursor: none !important;
+    }
+  }
+}
