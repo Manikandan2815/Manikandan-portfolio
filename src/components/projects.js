@@ -2,7 +2,7 @@
  * Projects Component — Phase Explore More
  * Renders project list and massive cinematic detail overlay with GSAP transitions.
  */
-import { projects } from '../../portfolio-data.js?v=16';
+import { projects } from '../../portfolio-data.js?v=17';
 
 export function renderProjects(container) {
   if (!container) return;

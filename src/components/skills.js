@@ -2,7 +2,7 @@
  * Skills Component — Phase 1 Foundation
  * Renders the typography-based interactive skills layout grouped by category (Development, AI/Data, Tools).
  */
-import { skills } from '../../portfolio-data.js?v=16';
+import { skills } from '../../portfolio-data.js?v=17';
 
 export function renderSkills(container) {
   if (!container) return;

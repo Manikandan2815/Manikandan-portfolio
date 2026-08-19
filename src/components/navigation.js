@@ -3,7 +3,7 @@
  * Implements toggle mechanisms, menu stagger animations, scroll reveals,
  * and keybound closures for accessibility.
  */
-import { personalInfo } from '../../portfolio-data.js?v=16';
+import { personalInfo } from '../../portfolio-data.js?v=17';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderNavigation(container) {

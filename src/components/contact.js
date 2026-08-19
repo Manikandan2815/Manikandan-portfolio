@@ -3,7 +3,7 @@
  * Renders the interactive Web3Forms contact section, direct mailto/social fallbacks,
  * resume CTAs, marquee details, and back-to-top integrations.
  */
-import { personalInfo, socialLinks } from '../../portfolio-data.js?v=16';
+import { personalInfo, socialLinks } from '../../portfolio-data.js?v=17';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderContact(container) {
@@ -185,6 +185,31 @@ export function setupContactInteractions() {
       }
 
       if (!isValid) return;
+
+      // Intercept placeholder key before calling the API
+      const accessKey = form.querySelector('input[name="access_key"]').value;
+      if (accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY_HERE') {
+        statusDiv.classList.remove('hidden');
+        statusDiv.classList.add('text-[#39FF14]', 'border-[#39FF14]/50', 'bg-[#39FF14]/5');
+        statusDiv.innerHTML = `
+          <div class="space-y-3 p-1">
+            <p class="font-bold text-[#39FF14]">// CONFIGURATION REQUIRED</p>
+            <p class="text-[#9A9A9A] text-[10px] leading-relaxed uppercase">
+              Static forms require an active access key. Get your free key at 
+              <a href="https://web3forms.com/" target="_blank" rel="noopener noreferrer" class="underline text-white hover:text-[#39FF14]">web3forms.com</a> 
+              and update the <code>access_key</code> field in <code>src/components/contact.js</code>.
+            </p>
+            <div class="h-[1px] w-full bg-[#1E1E1E] my-2"></div>
+            <p class="text-[#9A9A9A] text-[10px] uppercase">
+              In the meantime, click below to email this message directly:
+            </p>
+            <a href="mailto:${socialLinks.email}?subject=${encodeURIComponent(subjectInput.value)}&body=${encodeURIComponent(messageInput.value)}" class="inline-block mt-2 px-4 py-2 border border-[#39FF14] text-[#39FF14] hover:bg-[#39FF14] hover:text-black transition-all uppercase text-[9px] font-bold">
+              SEND DIRECTLY VIA EMAIL CLIENT →
+            </a>
+          </div>
+        `;
+        return;
+      }
 
       // Loading State
       submitBtn.disabled = true;
