@@ -2,7 +2,7 @@
  * Contact & Footer Component — Phase 1 Foundation
  * Renders the terminal contact options, footer credits, and back-to-top layout hooks.
  */
-import { personalInfo, socialLinks } from '../../portfolio-data.js?v=2';
+import { personalInfo, socialLinks } from '../../portfolio-data.js?v=15';
 
 export function renderContact(container) {
   if (!container) return;

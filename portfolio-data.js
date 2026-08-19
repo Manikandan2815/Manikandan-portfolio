@@ -109,36 +109,6 @@ export const projects = [
   },
   {
     id: 3,
-    title: "EVENT REGISTRATION & MANAGEMENT",
-    category: "WEB DEVELOPMENT",
-    shortDescription: "A web application for managing event registrations with user and administrative functionality.",
-    overview: "A web application for managing event registrations with user and administrative functionality.",
-    problem: "Organizers lack a simple, unified platform to handle user registrations, view active lists, and export data without database overhead.",
-    solution: "Created a lightweight web portal using Flask and SQLite, complete with attendee registration flows and admin search portals.",
-    role: "Solo Developer (Backend & Database integration)",
-    outcome: "Delivered a lightweight web-portal matching attendee signup and database export requirements.",
-    technologies: ["Python", "Flask", "SQLite", "Bootstrap", "CSV"],
-    features: [
-      "User attendee signup portal",
-      "Event details panel",
-      "Admin search dashboard",
-      "Registration lists CSV export"
-    ],
-    howItWorks: [
-      "Users register for the event via a web form.",
-      "Data is validated and stored in a lightweight SQLite database.",
-      "Admins log in to view registrations and filter attendees.",
-      "Registration lists are exported to spreadsheets."
-    ],
-    learning: "Improved understanding of Flask-based web application architecture and database integration.",
-    images: [
-      "assets/images/projects/event-management.webp"
-    ],
-    repository: "",
-    liveDemo: ""
-  },
-  {
-    id: 4,
     title: "AI CROP RECOMMENDATION SYSTEM",
     category: "AI / MACHINE LEARNING",
     shortDescription: "An AI/ML-based project concept designed to recommend suitable crops using agricultural input data.",
@@ -167,7 +137,7 @@ export const projects = [
     liveDemo: ""
   },
   {
-    id: 5,
+    id: 4,
     title: "COLOR SORTING MACHINE",
     category: "HARDWARE / ARDUINO / AUTOMATION",
     shortDescription: "An automated physical machine concept built with Arduino Uno, TCS3200 color sensor, and servo motors to identify and sort items by color.",

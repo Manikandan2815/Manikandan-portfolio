@@ -2,7 +2,7 @@
  * Certifications Component — Phase Custom Upgrade
  * Renders verified certificates or a clean, technical developer TODO placeholder when empty.
  */
-import { certifications } from '../../portfolio-data.js?v=13';
+import { certifications } from '../../portfolio-data.js?v=15';
 
 export function renderCertifications(container) {
   if (!container) return;
