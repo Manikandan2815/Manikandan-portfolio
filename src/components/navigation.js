@@ -3,7 +3,7 @@
  * Implements toggle mechanisms, menu stagger animations, scroll reveals,
  * and keybound closures for accessibility.
  */
-import { personalInfo } from '../../portfolio-data.js?v=15';
+import { personalInfo } from '../../portfolio-data.js?v=16';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderNavigation(container) {
@@ -16,7 +16,11 @@ export function renderNavigation(container) {
         ${personalInfo.name}
       </a>
       
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-4 md:gap-6">
+        <a href="assets/manikandan-resume.pdf" target="_blank" rel="noopener noreferrer" class="font-mono text-[9px] font-bold tracking-[0.2em] text-[#9A9A9A] hover:text-[#39FF14] border border-[#1E1E1E] hover:border-[#39FF14]/50 bg-[#141414]/30 px-3 py-1.5 uppercase transition-all">
+          VIEW RESUME
+        </a>
+        
         <div class="hidden md:flex items-center gap-2 text-[10px] tracking-widest text-[#9A9A9A] font-mono uppercase select-none">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#39FF14]"></span>
           ${personalInfo.statusIndicator}
@@ -77,6 +81,9 @@ export function renderNavigation(container) {
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#39FF14]"></span>
           ${personalInfo.statusIndicator}
         </div>
+        <a href="assets/manikandan-resume.pdf" target="_blank" rel="noopener noreferrer" class="font-mono text-[9px] font-bold tracking-[0.2em] text-[#9A9A9A] hover:text-[#39FF14] border border-[#1E1E1E] hover:border-[#39FF14]/50 bg-[#141414]/30 px-3 py-1.5 uppercase transition-all">
+          VIEW RESUME (PDF)
+        </a>
         <div class="font-mono text-[10px] text-[#9A9A9A] tracking-wider uppercase">
           © 2026 MANIKANDAN.R — BUILT WITH CURIOSITY.
         </div>

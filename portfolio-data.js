@@ -8,41 +8,44 @@ export const personalInfo = {
   name: "MANIKANDAN.R",
   title: "AI & DATA SCIENCE × SOFTWARE DEVELOPMENT",
   subtitle: "I BUILD THINGS THAT TURN IDEAS INTO EXPERIENCES.",
-  description: "Third-year B.Tech Artificial Intelligence and Data Science student focused on software development, AI-powered applications, and building meaningful digital products.",
+  description: "Third-year B.Tech Artificial Intelligence and Data Science student at Anand Institute of Higher Technology focused on software development, AI-powered applications, and building meaningful digital products.",
   education: {
     degree: "B.Tech Artificial Intelligence and Data Science",
+    institution: "Anand Institute of Higher Technology",
+    affiliation: "Anna University",
+    timeline: "2024 – 2028",
+    cgpa: "8.96 / 10.0",
     status: "3rd Year Undergraduate Student",
-    location: "India"
+    location: "Chennai, Tamil Nadu, India"
   },
   statusIndicator: "AVAILABLE FOR OPPORTUNITIES",
-  email: "manikandanr2815@gmail.com"
+  email: "mani15520007@gmail.com" // Updated from email on resume
 };
 
 export const skills = {
-  development: [
-    { name: "Python", desc: "Primary language for software development, scripting, data engineering, and machine learning." },
-    { name: "HTML", desc: "Semantic web page structure and accessible markup." },
-    { name: "CSS", desc: "Modern layouts, responsive design, custom animations, and visual styling." },
-    { name: "JavaScript", desc: "Core language for interactive web experiences, DOM scripting, and ES Modules." },
-    { name: "React", desc: "Building component-based, reusable, and state-driven web interfaces." },
-    { name: "Flask", desc: "Lightweight Python web framework for microservices, backend routing, and REST APIs." },
-    { name: "SQL", desc: "Designing relational databases, indexing, and writing clean structured queries." },
-    { name: "Git", desc: "Version control system to manage source history and collaborate effectively." }
+  languages: [
+    { name: "Python", desc: "Core language for software engineering, scripting, and data science." },
+    { name: "SQL (Basic)", desc: "Relational database querying and structures." },
+    { name: "HTML5", desc: "Semantic structure for modern accessible web pages." },
+    { name: "CSS3", desc: "Styling layouts, animations, and visual presentation." },
+    { name: "JavaScript", desc: "Dynamic interactive functionality and ES Modules." }
   ],
   aiData: [
-    { name: "Python", desc: "Core tool for data pipelines, AI models, and computational scripting." },
-    { name: "Machine Learning", desc: "Developing classification, regression, and clustering models for data insights." },
-    { name: "Data Analysis", desc: "Extracting patterns, cleansing datasets, and drawing logical conclusions from raw data." },
-    { name: "Pandas", desc: "Data manipulation library for cleaning, filtering, and joining structured datasets." },
-    { name: "NumPy", desc: "Scientific computing library supporting multi-dimensional arrays and mathematical operations." },
-    { name: "Matplotlib", desc: "Data visualization tool for rendering charts, histograms, and analytical plots." }
+    { name: "Artificial Intelligence", desc: "Designing intelligent system models and workflows." },
+    { name: "Data Science", desc: "Data processing, analysis, and statistical evaluation." },
+    { name: "Data Structures & Algorithms", desc: "Core logic, optimization, and problem-solving patterns." },
+    { name: "Pandas", desc: "Data manipulation, alignment, and structured operations." },
+    { name: "NumPy", desc: "Scientific computing, numerical arrays, and math utilities." }
+  ],
+  development: [
+    { name: "Flask", desc: "Lightweight backend micro-routing and REST API setups." },
+    { name: "Web Development", desc: "Building full-stack responsive web experiences." }
   ],
   tools: [
-    { name: "GitHub", desc: "Cloud hosting platform for Git repositories, actions, and code collaboration." },
-    { name: "VS Code", desc: "Primary code editor optimized with debugger extensions and terminal controls." },
-    { name: "SQLite", desc: "Lightweight, file-based SQL database for prototyping and local storage." },
-    { name: "Figma", desc: "Vector graphics editor and prototyping tool for UI/UX wireframes." },
-    { name: "Canva", desc: "Design tool used for quick graphics and visual slide layouts." }
+    { name: "Git", desc: "Distributed version control system to track file modifications." },
+    { name: "GitHub", desc: "Cloud repository hosting and developer collaboration pipelines." },
+    { name: "VS Code", desc: "Core development environment, debugging, and terminal control." },
+    { name: "Arduino IDE", desc: "Microcontroller coding, sensor integration, and hardware compiles." }
   ]
 };
 
@@ -169,11 +172,10 @@ export const projects = [
 ];
 
 export const journey = [
-  { year: "2024", title: "STARTED BUILDING", desc: "First steps into scripting. Created console automation scripts and learned computer science fundamentals." },
-  { year: "2025", title: "EXPLORED PYTHON + AI", desc: "Transitioned to building web backends (Flask) and implementing basic machine learning classifiers." },
-  { year: "2026", title: "THIRD YEAR UNDERGRADUATE", desc: "Pursuing B.Tech AI & Data Science. Building complex full-stack software and data tools." },
-  { year: "NOW", title: "BUILDING & EVOLVING", desc: "Refining backend patterns, exploring frontend state, and focusing on product engineering." },
-  { year: "NEXT", title: "PRODUCT DEVELOPER", desc: "Aiming to join engineering teams, solve large-scale problems, and construct robust products." }
+  { year: "2024", title: "B.TECH STARTED", desc: "Started B.Tech Artificial Intelligence & Data Science undergraduate program." },
+  { year: "2025", title: "PROJECT BUILDING", desc: "Began building standalone software applications and learning core programming methodologies." },
+  { year: "2026", title: "AI & WEB DEVELOPMENT", desc: "Integrated AI concepts and web services to build real-world micro-projects." },
+  { year: "NOW", title: "UNDERGRADUATE STUDIES", desc: "Continuing software development and AI engineering learning as a 3rd-year student." }
 ];
 
 export const focusAreas = [
@@ -194,8 +196,16 @@ export const careerDirection = [
 export const socialLinks = {
   linkedin: "https://www.linkedin.com/in/manikandan-r-ab1998385/",
   github: "https://github.com/Manikandan2815",
-  email: "manikandanr2815@gmail.com"
+  email: "mani15520007@gmail.com"
 };
 
-// Certifications TODO Data Structure (Empty to prevent fabrication of unverified credentials)
-export const certifications = [];
+// Verified Certifications
+export const certifications = [
+  {
+    name: "IBM Python for Data Science, AI & Development",
+    issuer: "Coursera",
+    date: "July 2026",
+    skills: ["Python", "AI", "Data Science"],
+    url: "" // Non-clickable, no fake URL
+  }
+];

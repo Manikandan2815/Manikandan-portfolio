@@ -38,10 +38,22 @@ export function renderAbout(container) {
             </p>
           </div>
 
-          <div class="mt-16 font-mono text-[9px] md:text-[10px] text-[#9A9A9A] tracking-[0.2em] uppercase space-y-2 border-l border-[#1E1E1E] pl-6 py-2 about-meta">
-            <div><span class="text-[#39FF14] font-semibold pr-2">STAGE //</span> 03RD YEAR UNDERGRADUATE</div>
-            <div><span class="text-[#39FF14] font-semibold pr-2">DEPT  //</span> AI & DATA SCIENCE</div>
-            <div><span class="text-[#39FF14] font-semibold pr-2">FOCUS //</span> SOFTWARE DEVELOPMENT</div>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 border-l border-[#1E1E1E] pl-6 py-2 about-meta font-mono text-[9px] md:text-[10px] text-[#9A9A9A] tracking-[0.15em] uppercase">
+            <div class="space-y-2.5">
+              <div><span class="text-[#39FF14] font-semibold block mb-0.5">INSTITUTION //</span> Anand Institute of Higher Tech</div>
+              <div><span class="text-[#39FF14] font-semibold block mb-0.5">TIMELINE //</span> 2024 – 2028</div>
+              <div><span class="text-[#39FF14] font-semibold block mb-0.5">ACADEMICS //</span> CGPA: 8.96 / 10</div>
+            </div>
+            <div class="space-y-2.5">
+              <div class="text-[#39FF14] font-semibold mb-1">CURRENTLY EXPLORING //</div>
+              <ul class="space-y-1.5 list-none">
+                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> Python</li>
+                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> Full-Stack Dev</li>
+                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> AI / Data Science</li>
+                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> Software Eng</li>
+                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> DSA</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

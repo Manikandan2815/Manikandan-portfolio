@@ -2,7 +2,7 @@
  * Certifications Component — Phase Custom Upgrade
  * Renders verified certificates or a clean, technical developer TODO placeholder when empty.
  */
-import { certifications } from '../../portfolio-data.js?v=15';
+import { certifications } from '../../portfolio-data.js?v=16';
 
 export function renderCertifications(container) {
   if (!container) return;
@@ -16,7 +16,7 @@ export function renderCertifications(container) {
         <div class="certification-card group relative p-6 bg-[#141414] border border-[#1E1E1E] transition-all duration-300 hover:border-[#39FF14] hover:bg-[#1A1A1A] select-none flex flex-col justify-between min-h-[180px]">
           <div>
             <div class="flex justify-between items-start gap-4 mb-4">
-              <span class="font-mono text-[9px] text-[#39FF14] tracking-[0.2em] uppercase">// ${cert.year || 'CREDENTIAL'}</span>
+              <span class="font-mono text-[9px] text-[#39FF14] tracking-[0.2em] uppercase">// ${cert.date || cert.year || 'CREDENTIAL'}</span>
               <span class="px-2 py-0.5 bg-[#1E1E1E] text-white border border-[#2B2B2B] text-[8px] font-mono tracking-widest uppercase">${cert.skills?.[0] || 'SKILL'}</span>
             </div>
             <h4 class="font-display font-bold text-lg md:text-xl text-[#F5F5F5] uppercase tracking-wide mb-2 group-hover:text-[#39FF14] transition-colors">
@@ -31,7 +31,12 @@ export function renderCertifications(container) {
             <a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="magnetic font-mono text-[9px] font-bold tracking-[0.2em] text-[#39FF14] hover:text-[#F5F5F5] transition-colors flex items-center gap-2 group/btn uppercase" data-cursor="VIEW" data-magnetic-strength="0.3">
               VIEW CREDENTIAL <span class="transition-transform group-hover/btn:translate-x-1">→</span>
             </a>
-          ` : ''}
+          ` : `
+            <div class="font-mono text-[9px] font-bold tracking-[0.2em] text-[#9A9A9A] uppercase flex items-center gap-2 select-none">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#39FF14]"></span>
+              COURSE COMPLETED
+            </div>
+          `}
         </div>
       `;
     });
