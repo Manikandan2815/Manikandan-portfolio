@@ -1,4 +1,4 @@
-import { journey, focusAreas, careerDirection } from '../../portfolio-data.js?v=20';
+import { journey, focusAreas, careerDirection } from '../../portfolio-data.js?v=21';
 
 export function renderJourney(container) {
   if (!container) return;

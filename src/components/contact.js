@@ -3,7 +3,7 @@
  * Renders the interactive Web3Forms contact section, direct mailto/social fallbacks,
  * resume CTAs, marquee details, and back-to-top integrations.
  */
-import { personalInfo, socialLinks } from '../../portfolio-data.js?v=20';
+import { personalInfo, socialLinks } from '../../portfolio-data.js?v=21';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderContact(container) {
@@ -77,16 +77,18 @@ export function renderContact(container) {
           </div>
         </form>
 
+        <!-- Selectable Email Address Display -->
+        <div class="mt-12 text-center font-mono text-[9px] md:text-xs text-[#9A9A9A] tracking-widest uppercase select-all bg-[#141414]/30 border border-[#1E1E1E] px-6 py-4 max-w-xl w-full">
+          DIRECT EMAIL // <span class="text-[#39FF14] font-bold select-all">${socialLinks.email}</span>
+        </div>
+
         <!-- Developer Links & Fallbacks -->
-        <div class="flex flex-wrap justify-center gap-4 mt-12 w-full max-w-xl border-t border-[#1E1E1E]/50 pt-8">
+        <div class="flex flex-wrap justify-center gap-4 mt-6 w-full max-w-xl border-t border-[#1E1E1E]/50 pt-6">
           <a href="${socialLinks.github}" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub" class="magnetic contact-btn px-5 py-3.5 bg-[#141414] border border-[#1E1E1E] text-[10px] font-mono tracking-[0.2em] font-bold text-[#F5F5F5] hover:text-[#39FF14] hover:border-[#39FF14]/50 hover:bg-[#39FF14]/5 transition-all uppercase rounded-full" data-cursor="GITHUB" data-magnetic-strength="0.4">
             GITHUB
           </a>
           <a href="${socialLinks.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn" class="magnetic contact-btn px-5 py-3.5 bg-[#141414] border border-[#1E1E1E] text-[10px] font-mono tracking-[0.2em] font-bold text-[#F5F5F5] hover:text-[#39FF14] hover:border-[#39FF14]/50 hover:bg-[#39FF14]/5 transition-all uppercase rounded-full" data-cursor="LINKEDIN" data-magnetic-strength="0.4">
             LINKEDIN
-          </a>
-          <a href="mailto:${socialLinks.email}" target="_blank" rel="noopener noreferrer" aria-label="Send email" class="magnetic contact-btn px-5 py-3.5 bg-[#141414] border border-[#1E1E1E] text-[10px] font-mono tracking-[0.2em] font-bold text-[#F5F5F5] hover:text-[#39FF14] hover:border-[#39FF14]/50 hover:bg-[#39FF14]/5 transition-all uppercase rounded-full" data-cursor="EMAIL" data-magnetic-strength="0.4">
-            EMAIL ME
           </a>
           <a href="assets/manikandan-resume.pdf" download="Manikandan_R_Resume.pdf" class="magnetic contact-btn px-5 py-3.5 bg-[#39FF14]/10 border border-[#39FF14]/30 text-[10px] font-mono tracking-[0.2em] font-bold text-[#39FF14] hover:bg-[#39FF14]/20 hover:border-[#39FF14] transition-all uppercase rounded-full" data-cursor="DOWNLOAD" data-magnetic-strength="0.4">
             DOWNLOAD RESUME

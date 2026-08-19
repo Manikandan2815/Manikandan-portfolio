@@ -2,7 +2,7 @@
  * Hero Component — Phase B Cinematic Hero
  * Renders the dominant display-hero typography, portrait integration, and sequence GSAP timeline.
  */
-import { personalInfo } from '../../portfolio-data.js?v=20';
+import { personalInfo } from '../../portfolio-data.js?v=21';
 
 export function renderHero(container) {
   if (!container) return;
