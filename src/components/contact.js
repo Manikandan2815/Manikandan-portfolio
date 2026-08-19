@@ -3,7 +3,7 @@
  * Renders the interactive Web3Forms contact section, direct mailto/social fallbacks,
  * resume CTAs, marquee details, and back-to-top integrations.
  */
-import { personalInfo, socialLinks } from '../../portfolio-data.js?v=19';
+import { personalInfo, socialLinks } from '../../portfolio-data.js?v=20';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderContact(container) {
@@ -37,7 +37,7 @@ export function renderContact(container) {
             Web3Forms Public Access Key.
             Generate your free key at https://web3forms.com/ and replace the access_key value below.
           -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+          <input type="hidden" name="access_key" value="0cee4405-e75f-4c75-8d04-306f95f542dc">
           <input type="hidden" name="from_name" value="Manikandan Portfolio Contact">
           <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
           
