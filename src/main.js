@@ -3,21 +3,21 @@
  * Coordinates ES6 modules, handles mounting, checking accessibility preferences,
  * initializes Lenis, and binds loader outcomes to Hero entry sequences.
  */
-import { renderLoading, startLoadingAnimation } from './components/loading.js?v=23';
-import { renderNavigation, setupNavigationInteractions } from './components/navigation.js?v=23';
-import { renderHero, animateHeroEntrance } from './components/hero.js?v=23';
-import { renderAbout } from './components/about.js?v=23';
-import { renderSkills } from './components/skills.js?v=23';
-import { renderProjects } from './components/projects.js?v=23';
-import { renderJourney } from './components/journey.js?v=23';
-import { renderCertifications } from './components/certifications.js?v=23';
-import { renderContact, setupContactInteractions } from './components/contact.js?v=23';
+import { renderLoading, startLoadingAnimation } from './components/loading.js?v=24';
+import { renderNavigation, setupNavigationInteractions } from './components/navigation.js?v=24';
+import { renderHero, animateHeroEntrance } from './components/hero.js?v=24';
+import { renderAbout } from './components/about.js?v=24';
+import { renderSkills } from './components/skills.js?v=24';
+import { renderProjects } from './components/projects.js?v=24';
+import { renderJourney } from './components/journey.js?v=24';
+import { renderCertifications } from './components/certifications.js?v=24';
+import { renderContact, setupContactInteractions } from './components/contact.js?v=24';
 
-import { initSmoothScroll } from './utils/smooth-scroll.js?v=23';
-import { initGlobalAnimations } from './utils/animations.js?v=23';
-import { initWebGL } from './components/webgl.js?v=23';
-import { initCursor } from './utils/cursor.js?v=23';
-import { initMagnetics } from './utils/magnetic.js?v=23';
+import { initSmoothScroll } from './utils/smooth-scroll.js?v=24';
+import { initGlobalAnimations } from './utils/animations.js?v=24';
+import { initWebGL } from './components/webgl.js?v=24';
+import { initCursor } from './utils/cursor.js?v=24';
+import { initMagnetics } from './utils/magnetic.js?v=24';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("[Portfolio Bootstrapper] Initializing Phase 2 layout elements...");
