@@ -26,9 +26,9 @@ export function renderAbout(container) {
         <!-- Right: Biography & Editorial Tech Details -->
         <div class="lg:col-span-6 flex flex-col justify-end pt-4 lg:pt-32">
           
-          <div class="about-biography space-y-8 font-sans text-[15px] md:text-base text-[#9A9A9A] leading-[1.8] max-w-xl font-normal relative z-10">
+          <div class="about-biography space-y-8 font-sans text-base md:text-lg lg:text-xl text-[#D4D4D4] leading-[1.9] max-w-xl font-normal relative z-10">
             <p class="bio-paragraph">
-              I'm <strong class="text-[#F5F5F5] font-semibold">Manikandan.R</strong>, a third-year B.Tech Artificial Intelligence and Data Science student with a strong interest in software development.
+              I'm <strong class="text-[#F5F5F5] font-semibold tracking-wide">Manikandan.R</strong>, a third-year B.Tech Artificial Intelligence and Data Science student with a strong interest in software development.
             </p>
             <p class="bio-paragraph">
               I enjoy turning ideas into working products, experimenting with technology, solving problems, and continuously improving my development skills.
@@ -38,20 +38,20 @@ export function renderAbout(container) {
             </p>
           </div>
 
-          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 border-l border-[#1E1E1E] pl-6 py-2 about-meta font-mono text-[9px] md:text-[10px] text-[#9A9A9A] tracking-[0.15em] uppercase">
-            <div class="space-y-2.5">
-              <div><span class="text-[#39FF14] font-semibold block mb-0.5">INSTITUTION //</span> Anand Institute of Higher Tech</div>
-              <div><span class="text-[#39FF14] font-semibold block mb-0.5">TIMELINE //</span> 2024 – 2028</div>
-              <div><span class="text-[#39FF14] font-semibold block mb-0.5">ACADEMICS //</span> CGPA: 8.96 / 10</div>
+          <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-10 border-l-2 border-[#1E1E1E] pl-6 py-2 about-meta font-mono text-[11px] md:text-xs text-[#E5E5E5] tracking-[0.15em] uppercase leading-relaxed">
+            <div class="space-y-4">
+              <div><span class="text-[#39FF14] font-semibold block mb-1">INSTITUTION //</span> Anand Institute of Higher Tech</div>
+              <div><span class="text-[#39FF14] font-semibold block mb-1">TIMELINE //</span> 2024 &mdash; 2028</div>
+              <div><span class="text-[#39FF14] font-semibold block mb-1">ACADEMICS //</span> CGPA: 8.96 / 10</div>
             </div>
-            <div class="space-y-2.5">
-              <div class="text-[#39FF14] font-semibold mb-1">CURRENTLY EXPLORING //</div>
-              <ul class="space-y-1.5 list-none">
-                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> Python</li>
-                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> Full-Stack Dev</li>
-                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> AI / Data Science</li>
-                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> Software Eng</li>
-                <li class="flex items-center gap-1.5"><span class="w-1 h-1 bg-[#39FF14]"></span> DSA</li>
+            <div class="space-y-4">
+              <div class="text-[#39FF14] font-semibold mb-2">CURRENTLY EXPLORING //</div>
+              <ul class="space-y-2.5 list-none text-[#E5E5E5]">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-[#39FF14]"></span> Python</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-[#39FF14]"></span> Full-Stack Dev</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-[#39FF14]"></span> AI / Data Science</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-[#39FF14]"></span> Software Eng</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-[#39FF14]"></span> DSA</li>
               </ul>
             </div>
           </div>
