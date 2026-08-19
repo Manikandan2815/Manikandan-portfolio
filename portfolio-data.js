@@ -19,7 +19,7 @@ export const personalInfo = {
     location: "Chennai, Tamil Nadu, India"
   },
   statusIndicator: "AVAILABLE FOR OPPORTUNITIES",
-  email: "mani15520007@gmail.com" // Updated from email on resume
+  email: "manikandanr2815@gmail.com"
 };
 
 export const skills = {
@@ -196,7 +196,7 @@ export const careerDirection = [
 export const socialLinks = {
   linkedin: "https://www.linkedin.com/in/manikandan-r-ab1998385/",
   github: "https://github.com/Manikandan2815",
-  email: "mani15520007@gmail.com"
+  email: "manikandanr2815@gmail.com"
 };
 
 // Verified Certifications

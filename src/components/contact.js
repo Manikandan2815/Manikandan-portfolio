@@ -3,7 +3,7 @@
  * Renders the interactive Web3Forms contact section, direct mailto/social fallbacks,
  * resume CTAs, marquee details, and back-to-top integrations.
  */
-import { personalInfo, socialLinks } from '../../portfolio-data.js?v=18';
+import { personalInfo, socialLinks } from '../../portfolio-data.js?v=19';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderContact(container) {
