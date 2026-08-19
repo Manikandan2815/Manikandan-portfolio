@@ -3,7 +3,7 @@
  * Renders the interactive Web3Forms contact section, direct mailto/social fallbacks,
  * resume CTAs, marquee details, and back-to-top integrations.
  */
-import { personalInfo, socialLinks } from '../../portfolio-data.js?v=17';
+import { personalInfo, socialLinks } from '../../portfolio-data.js?v=18';
 import { getLenis } from '../utils/smooth-scroll.js';
 
 export function renderContact(container) {
@@ -44,26 +44,26 @@ export function renderContact(container) {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="flex flex-col">
               <label for="form-name" class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.2em] uppercase mb-2">Name *</label>
-              <input type="text" id="form-name" name="name" required class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] uppercase tracking-wide" placeholder="YOUR NAME">
+              <input type="text" id="form-name" name="name" required class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] tracking-wide" placeholder="Your Name">
               <span class="form-error font-mono text-[8px] text-red-500 tracking-wider mt-1.5 hidden">NAME IS REQUIRED</span>
             </div>
             
             <div class="flex flex-col">
               <label for="form-email" class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.2em] uppercase mb-2">Email *</label>
-              <input type="email" id="form-email" name="email" required class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] uppercase tracking-wide" placeholder="YOUR.EMAIL@DOMAIN.COM">
+              <input type="email" id="form-email" name="email" required class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] tracking-wide" placeholder="your.email@domain.com">
               <span class="form-error font-mono text-[8px] text-red-500 tracking-wider mt-1.5 hidden">VALID EMAIL IS REQUIRED</span>
             </div>
           </div>
 
           <div class="flex flex-col">
             <label for="form-subject" class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.2em] uppercase mb-2">Subject *</label>
-            <input type="text" id="form-subject" name="subject" required class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] uppercase tracking-wide" placeholder="INQUIRY / OPPORTUNITY">
+            <input type="text" id="form-subject" name="subject" required class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] tracking-wide" placeholder="Inquiry / Opportunity">
             <span class="form-error font-mono text-[8px] text-red-500 tracking-wider mt-1.5 hidden">SUBJECT IS REQUIRED</span>
           </div>
 
           <div class="flex flex-col">
             <label for="form-message" class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.2em] uppercase mb-2">Message *</label>
-            <textarea id="form-message" name="message" required rows="4" class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] uppercase tracking-wide resize-none" placeholder="YOUR MESSAGE DETAILS"></textarea>
+            <textarea id="form-message" name="message" required rows="4" class="w-full bg-[#141414] border border-[#1E1E1E] focus:border-[#39FF14] px-4 py-3 text-sm text-[#F5F5F5] font-sans transition-colors outline-none placeholder-[#3A3A3A] tracking-wide resize-none" placeholder="Your message details..."></textarea>
             <span class="form-error font-mono text-[8px] text-red-500 tracking-wider mt-1.5 hidden">MESSAGE IS REQUIRED</span>
           </div>
 
