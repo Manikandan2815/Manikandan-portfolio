@@ -70,7 +70,7 @@ export function renderCertifications(container) {
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         
         <!-- Left: Header -->
-        <div class="lg:col-span-4 flex flex-col justify-start">
+        <div class="lg:col-span-4 cert-header flex flex-col justify-start">
           <div class="font-mono text-xs text-[#39FF14] tracking-[0.2em] uppercase mb-4">
             04 / VERIFICATIONS
           </div>
@@ -82,7 +82,7 @@ export function renderCertifications(container) {
         </div>
         
         <!-- Right: Content Grid or Placeholder -->
-        <div class="lg:col-span-8 flex flex-col justify-center">
+        <div class="lg:col-span-8 cert-grid flex flex-col justify-center">
           ${contentHtml}
         </div>
         

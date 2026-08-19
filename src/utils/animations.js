@@ -286,8 +286,8 @@ export function initGlobalAnimations() {
   // ==========================================
   const certsSection = document.getElementById('certifications');
   if (certsSection) {
-    const certGrid = certsSection.querySelector('.lg:col-span-8');
-    const certHeader = certsSection.querySelector('.lg:col-span-4');
+    const certGrid = certsSection.querySelector('.cert-grid');
+    const certHeader = certsSection.querySelector('.cert-header');
 
     if (certHeader && certGrid) {
       gsap.from(certHeader.children, {
