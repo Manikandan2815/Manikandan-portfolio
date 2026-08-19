@@ -2,7 +2,7 @@
  * Projects Component — Phase Explore More
  * Renders project list and massive cinematic detail overlay with GSAP transitions.
  */
-import { projects } from '../../portfolio-data.js?v=3';
+import { projects } from '../../portfolio-data.js?v=14';
 
 export function renderProjects(container) {
   if (!container) return;
@@ -10,6 +10,11 @@ export function renderProjects(container) {
   let projectsHtml = '';
   
   projects.forEach((proj, index) => {
+    // Generate tech tags html for the card
+    const techTagsHtml = proj.technologies.slice(0, 3).map(tech => 
+      `<span class="px-2 py-0.5 bg-[#1E1E1E] text-white border border-[#2B2B2B] text-[8px] font-mono tracking-widest uppercase">${tech}</span>`
+    ).join(' ');
+
     projectsHtml += `
       <!-- Single Project Panel (Desktop Horizontal / Mobile Vertical) -->
       <div class="project-panel w-full lg:w-screen h-auto lg:h-screen flex-shrink-0 relative flex flex-col lg:flex-row items-center justify-center py-24 lg:py-0 px-6 lg:px-24 border-b lg:border-b-0 lg:border-r border-[#1E1E1E]" data-id="${proj.id}">
@@ -21,22 +26,22 @@ export function renderProjects(container) {
 
         <div class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          <!-- Visual Box -->
+          <!-- Visual Box (Main Focus) -->
           <div class="lg:col-span-7 cursor-pointer explore-preview group">
             <div class="project-image-wrapper w-full aspect-[4/3] lg:aspect-[16/10] bg-[#0A0A0A] border border-[#1E1E1E] relative overflow-hidden transition-all duration-500 hover:border-[#39FF14]/40" style="clip-path: inset(0 0 0 0);">
-              <!-- Replace with actual images eventually -->
-              <div class="absolute inset-0 bg-gradient-to-br from-[#1E1E1E]/20 to-transparent z-0"></div>
-              <div class="absolute inset-0 opacity-10 flex flex-col justify-between p-4 font-mono text-[8px] text-[#39FF14] leading-normal pointer-events-none">
-                <div>// INIT PROJECT_${proj.id}</div>
-                <div class="text-right">SYS_STATUS: ACTIVE</div>
+              <!-- WebP Project image -->
+              <img src="${proj.images[0]}" alt="${proj.title} Mockup Preview" class="w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-out z-0">
+              
+              <!-- Subtle gradient overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/40 z-10"></div>
+              
+              <div class="absolute top-4 left-4 font-mono text-[8px] text-[#39FF14] leading-normal pointer-events-none z-20 bg-[#0A0A0A]/80 border border-[#39FF14]/20 px-2 py-1 uppercase font-bold">
+                // ACTIVE SYSTEM
               </div>
               
-              <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center select-none z-10">
-                <span class="font-display text-xs lg:text-sm tracking-[0.2em] text-[#9A9A9A] group-hover:text-[#F5F5F5] transition-colors uppercase mb-2">
-                  ${proj.title}
-                </span>
-                <span class="font-mono text-[10px] tracking-[0.2em] text-[#39FF14] opacity-80 group-hover:opacity-100 transition-opacity uppercase font-bold border border-[#39FF14]/20 px-4 py-2 bg-[#39FF14]/5 scale-95 group-hover:scale-100 duration-300">
-                  OPEN PROJECT
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center select-none z-25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/85">
+                <span class="font-mono text-[10px] tracking-[0.2em] text-[#39FF14] uppercase font-bold border border-[#39FF14]/50 px-4 py-2 bg-[#39FF14]/5 scale-95 group-hover:scale-100 duration-300">
+                  OPEN CASE STUDY
                 </span>
               </div>
             </div>
@@ -44,8 +49,9 @@ export function renderProjects(container) {
           
           <!-- Info Box -->
           <div class="lg:col-span-5 project-info-container flex flex-col items-start text-left">
-            <div class="font-mono text-[#39FF14] text-[10px] font-semibold tracking-[0.25em] mb-4">
-              0${proj.id} — PROJECT
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-mono text-[#39FF14] text-[10px] font-semibold tracking-[0.25em]">0${proj.id} — PROJECT</span>
+              ${techTagsHtml}
             </div>
             
             <h3 class="font-display font-black text-3xl md:text-5xl lg:text-6xl uppercase text-[#F5F5F5] mb-4 leading-[1.05] tracking-tight">
@@ -60,8 +66,8 @@ export function renderProjects(container) {
               ${proj.shortDescription}
             </p>
             
-            <button class="explore-btn magnetic font-mono text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#F5F5F5] hover:text-[#39FF14] uppercase transition-colors flex items-center gap-3 group px-6 py-4 bg-[#141414] border border-[#1E1E1E] hover:border-[#39FF14]/50" data-cursor="EXPLORE" data-magnetic-strength="0.4">
-              EXPLORE MORE 
+            <button class="explore-btn explore-case-study magnetic font-mono text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#F5F5F5] hover:text-[#39FF14] uppercase transition-colors flex items-center gap-3 group px-6 py-4 bg-[#141414] border border-[#1E1E1E] hover:border-[#39FF14]/50" data-cursor="EXPLORE" data-magnetic-strength="0.4">
+              EXPLORE PROJECT
               <span class="text-[#39FF14] text-sm pointer-events-none transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
           </div>
@@ -106,43 +112,65 @@ export function renderProjects(container) {
       </div>
       
       <div class="flex-grow flex flex-col w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pb-24 outline-none" tabindex="-1" id="modal-focus-target">
-        <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           
-          <!-- Left: Visual Gallery -->
-          <div class="xl:col-span-7 flex flex-col gap-6 order-2 xl:order-1">
+          <!-- Left: Gallery & How it Works -->
+          <div class="lg:col-span-7 flex flex-col gap-12 order-2 lg:order-1">
+            <!-- Visual Gallery -->
             <div id="modal-gallery" class="w-full flex flex-col gap-6"></div>
+            
+            <!-- How It Works Section -->
+            <div class="border-t border-[#1E1E1E] pt-8">
+              <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-6 uppercase font-bold">// HOW IT WORKS</h3>
+              <ol id="modal-how-it-works" class="space-y-4 list-decimal pl-5 font-sans text-[15px] md:text-base text-[#9A9A9A] leading-relaxed"></ol>
+            </div>
+
+            <!-- Outcomes & Key Learning -->
+            <div class="border-t border-[#1E1E1E] pt-8">
+              <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-4 uppercase font-bold">// RESULT & OUTCOME</h3>
+              <p id="modal-learning" class="font-sans text-[#F5F5F5] text-[15px] md:text-base leading-[1.8] opacity-90"></p>
+            </div>
           </div>
           
-          <!-- Right: Info -->
-          <div class="xl:col-span-5 flex flex-col text-left order-1 xl:order-2 xl:sticky xl:top-24 self-start">
+          <!-- Right: Info Details -->
+          <div class="lg:col-span-5 flex flex-col text-left order-1 lg:order-2 lg:sticky lg:top-24 self-start">
             <div class="font-mono text-[10px] text-[#39FF14] tracking-[0.3em] mb-4 uppercase">
-              <span id="modal-id"></span> / PROJECT
+              <span id="modal-id"></span> / PROJECT CASE STUDY
             </div>
             
             <h2 id="modal-title" class="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight text-[#F5F5F5] uppercase mb-4 leading-[1.05]"></h2>
             
-            <div id="modal-category" class="font-mono text-[10px] text-[#9A9A9A] tracking-[0.2em] uppercase mb-12 border-b border-[#1E1E1E] pb-6"></div>
+            <div id="modal-category" class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.2em] uppercase mb-8 border-b border-[#1E1E1E] pb-4"></div>
             
-            <div class="mb-10">
-              <p id="modal-overview" class="font-sans text-[#F5F5F5] text-[15px] md:text-base leading-[1.7] opacity-90"></p>
+            <div class="mb-6 font-mono text-[9px] text-[#9A9A9A] tracking-[0.2em] uppercase">
+              ROLE: <span id="modal-role" class="text-[#39FF14] font-semibold"></span>
+            </div>
+
+            <div class="mb-8">
+              <p id="modal-overview" class="font-sans text-[#9A9A9A] text-[15px] md:text-base leading-[1.7]"></p>
             </div>
             
-            <div class="mb-10">
+            <div class="mb-8 border-t border-[#1E1E1E] pt-6">
+              <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-3 uppercase font-bold">THE PROBLEM</h3>
+              <p id="modal-problem" class="font-sans text-[#9A9A9A] text-[14px] md:text-[15px] leading-[1.7]"></p>
+            </div>
+
+            <div class="mb-8 border-t border-[#1E1E1E] pt-6">
+              <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-3 uppercase font-bold">THE SOLUTION</h3>
+              <p id="modal-solution" class="font-sans text-[#F5F5F5] text-[14px] md:text-[15px] leading-[1.7] opacity-95"></p>
+            </div>
+
+            <div class="mb-8 border-t border-[#1E1E1E] pt-6">
               <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-4 uppercase font-bold">TECH STACK</h3>
               <div id="modal-tech" class="flex flex-wrap gap-2"></div>
             </div>
             
-            <div class="mb-10">
+            <div class="mb-10 border-t border-[#1E1E1E] pt-6">
               <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-4 uppercase font-bold">KEY FEATURES</h3>
-              <ul id="modal-features" class="space-y-3 font-sans text-[15px] md:text-base text-[#F5F5F5] opacity-90 list-none pl-1"></ul>
+              <ul id="modal-features" class="space-y-2.5 font-sans text-[14px] md:text-[15px] text-[#9A9A9A] list-none pl-1"></ul>
             </div>
             
-            <div class="mb-12">
-              <h3 class="font-mono text-[9px] text-[#9A9A9A] tracking-[0.25em] mb-4 uppercase font-bold">WHAT I LEARNED</h3>
-              <p id="modal-learning" class="font-sans text-[#F5F5F5] text-[15px] md:text-base leading-[1.7] opacity-90"></p>
-            </div>
-            
-            <div class="flex flex-col sm:flex-row gap-4 mt-auto" id="modal-actions">
+            <div class="flex flex-col sm:flex-row gap-4 mt-auto border-t border-[#1E1E1E] pt-6" id="modal-actions">
               <!-- Dynamically populated links -->
             </div>
           </div>
@@ -180,7 +208,7 @@ function setupModalInteractions() {
   // Close handlers
   closeBtn.addEventListener('click', closeModal);
   
-  // Escape key handler
+  // Escape key close
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
       closeModal();
@@ -195,8 +223,11 @@ function setupModalInteractions() {
     document.getElementById('modal-id').textContent = '0' + proj.id;
     document.getElementById('modal-title').textContent = proj.title;
     document.getElementById('modal-category').textContent = proj.category;
+    document.getElementById('modal-role').textContent = proj.role;
     document.getElementById('modal-overview').textContent = proj.overview;
-    document.getElementById('modal-learning').textContent = proj.learning;
+    document.getElementById('modal-problem').textContent = proj.problem;
+    document.getElementById('modal-solution').textContent = proj.solution;
+    document.getElementById('modal-learning').textContent = proj.outcome;
 
     // Tech stack
     document.getElementById('modal-tech').innerHTML = proj.technologies.map(t => 
@@ -206,6 +237,11 @@ function setupModalInteractions() {
     // Features
     document.getElementById('modal-features').innerHTML = proj.features.map(f => 
       `<li class="flex items-start gap-3"><span class="text-[#39FF14] text-lg leading-none mt-[-2px]">•</span> <span>${f}</span></li>`
+    ).join('');
+
+    // How It Works
+    document.getElementById('modal-how-it-works').innerHTML = proj.howItWorks.map(step => 
+      `<li class="mb-2"><span>${step}</span></li>`
     ).join('');
 
     // Links
@@ -238,11 +274,10 @@ function setupModalInteractions() {
     // Gallery / Visuals
     const galleryContainer = document.getElementById('modal-gallery');
     if (proj.images && proj.images.length > 0) {
-      // Create lazy loaded gallery images
+      // Create gallery images
       galleryContainer.innerHTML = proj.images.map((imgSrc, i) => `
         <div class="w-full bg-[#141414] border border-[#1E1E1E] overflow-hidden">
-          <!-- We rely on actual images falling back gracefully if missing, or a proper script to handle missing images -->
-          <img src="${imgSrc}" alt="${proj.title} Screenshot ${i+1}" class="w-full h-auto object-cover object-center opacity-80 hover:opacity-100 transition-opacity" onerror="this.parentElement.innerHTML='<div class=\\'aspect-[16/10] flex flex-col items-center justify-center text-center p-8\\'><span class=\\'font-mono text-[10px] tracking-widest text-[#9A9A9A] uppercase\\'>PROJECT VISUAL COMING SOON</span></div>'">
+          <img src="${imgSrc}" alt="${proj.title} Screenshot ${i+1}" class="w-full h-auto object-cover object-center opacity-85 hover:opacity-100 transition-opacity">
         </div>
       `).join('');
     } else {
@@ -273,8 +308,9 @@ function setupModalInteractions() {
     // Setup GSAP starting properties
     gsap.set(modal, { opacity: 0 });
     const revealElements = [
-      '#modal-id', '#modal-title', '#modal-category', 
-      '#modal-overview', '#modal-tech', '#modal-features', 
+      '#modal-id', '#modal-title', '#modal-category', '#modal-role',
+      '#modal-overview', '#modal-problem', '#modal-solution',
+      '#modal-tech', '#modal-features', '#modal-how-it-works',
       '#modal-learning', '#modal-actions'
     ];
     gsap.set(revealElements, { opacity: 0, y: 25 });
@@ -287,7 +323,7 @@ function setupModalInteractions() {
       .to(revealElements, { 
         opacity: 1, 
         y: 0, 
-        stagger: 0.05, 
+        stagger: 0.04, 
         duration: 0.6, 
         ease: "power3.out" 
       }, "-=0.4");
@@ -312,13 +348,14 @@ function setupModalInteractions() {
       }
     });
 
-    const revealElements = [
-      '#modal-actions', '#modal-learning', '#modal-features', 
-      '#modal-tech', '#modal-overview', '#modal-category', 
-      '#modal-title', '#modal-id'
+    const closeElements = [
+      '#modal-id', '#modal-title', '#modal-category', '#modal-role',
+      '#modal-overview', '#modal-problem', '#modal-solution',
+      '#modal-tech', '#modal-features', '#modal-how-it-works',
+      '#modal-learning', '#modal-actions'
     ];
 
-    tl.to(revealElements, { opacity: 0, y: 10, stagger: 0.02, duration: 0.3, ease: "power2.in" })
+    tl.to(closeElements, { opacity: 0, y: 10, stagger: 0.02, duration: 0.3, ease: "power2.in" })
       .to('#modal-gallery', { opacity: 0, scale: 0.98, duration: 0.3, ease: "power2.in" }, "-=0.2")
       .to(modal, { opacity: 0, duration: 0.3, ease: "power2.in" }, "-=0.1");
   }

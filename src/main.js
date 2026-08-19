@@ -3,20 +3,21 @@
  * Coordinates ES6 modules, handles mounting, checking accessibility preferences,
  * initializes Lenis, and binds loader outcomes to Hero entry sequences.
  */
-import { renderLoading, startLoadingAnimation } from './components/loading.js?v=13';
-import { renderNavigation, setupNavigationInteractions } from './components/navigation.js?v=13';
-import { renderHero, animateHeroEntrance } from './components/hero.js?v=13';
-import { renderAbout } from './components/about.js?v=13';
-import { renderSkills } from './components/skills.js?v=13';
-import { renderProjects } from './components/projects.js?v=13';
-import { renderJourney } from './components/journey.js?v=13';
-import { renderContact } from './components/contact.js?v=13';
+import { renderLoading, startLoadingAnimation } from './components/loading.js?v=14';
+import { renderNavigation, setupNavigationInteractions } from './components/navigation.js?v=14';
+import { renderHero, animateHeroEntrance } from './components/hero.js?v=14';
+import { renderAbout } from './components/about.js?v=14';
+import { renderSkills } from './components/skills.js?v=14';
+import { renderProjects } from './components/projects.js?v=14';
+import { renderJourney } from './components/journey.js?v=14';
+import { renderCertifications } from './components/certifications.js?v=14';
+import { renderContact } from './components/contact.js?v=14';
 
-import { initSmoothScroll } from './utils/smooth-scroll.js?v=13';
-import { initGlobalAnimations } from './utils/animations.js?v=13';
-import { initWebGL } from './components/webgl.js?v=13';
-import { initCursor } from './utils/cursor.js?v=13';
-import { initMagnetics } from './utils/magnetic.js?v=13';
+import { initSmoothScroll } from './utils/smooth-scroll.js?v=14';
+import { initGlobalAnimations } from './utils/animations.js?v=14';
+import { initWebGL } from './components/webgl.js?v=14';
+import { initCursor } from './utils/cursor.js?v=14';
+import { initMagnetics } from './utils/magnetic.js?v=14';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("[Portfolio Bootstrapper] Initializing Phase 2 layout elements...");
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutMount = document.getElementById('about-mount');
   const skillsMount = document.getElementById('skills-mount');
   const projectsMount = document.getElementById('projects-mount');
+  const certificationsMount = document.getElementById('certifications-mount');
   const journeyMount = document.getElementById('journey-mount');
   const contactMount = document.getElementById('contact-mount');
 
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAbout(aboutMount);
   renderSkills(skillsMount);
   renderProjects(projectsMount);
+  renderCertifications(certificationsMount);
   renderJourney(journeyMount);
   renderContact(contactMount);
 

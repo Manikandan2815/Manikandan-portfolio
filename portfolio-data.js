@@ -53,18 +53,26 @@ export const projects = [
     category: "AI / EDUCATION / PDF ASSISTANT",
     shortDescription: "An AI-powered academic notes assistant that helps students interact with PDF study materials and ask questions based on their notes.",
     overview: "An AI-powered academic notes assistant that helps students interact with PDF study materials and ask questions based on their notes.",
+    problem: "Students often struggle to quickly extract key learning points from long PDF lecture notes, resulting in hours spent manually searching through text.",
+    solution: "Developed a web assistant that parses PDF documents locally, indexes the content, and provides an AI chatbot interface for instant contextual Q&A.",
+    role: "Solo Developer (Full-Stack & AI Integration)",
+    outcome: "Created a fully functional local assistant that handles academic notes interaction without external API dependencies.",
     technologies: ["Python", "Flask", "PDF Processing", "Ollama", "AI"],
     features: [
-      "PDF-based study material",
-      "Question answering",
-      "AI-assisted responses",
-      "Student-focused interface"
+      "PDF-based study material parsing",
+      "Interactive chatbot interface",
+      "AI-assisted contextual responses",
+      "Student-focused web dashboard"
+    ],
+    howItWorks: [
+      "User uploads a PDF document via the web dashboard.",
+      "Flask backend parses the document and extracts text segments.",
+      "Text is indexed and queried against the local AI model (Ollama).",
+      "AI responds with contextual reference pages and answers."
     ],
     learning: "Built experience with PDF processing, Flask and integrating a local AI workflow into a web application.",
     images: [
-      // "assets/images/projects/aids-bot-1.png",
-      // "assets/images/projects/aids-bot-2.png",
-      // "assets/images/projects/aids-bot-3.png"
+      "assets/images/projects/aids-bot.webp"
     ],
     repository: "",
     liveDemo: ""
@@ -75,18 +83,26 @@ export const projects = [
     category: "SOFTWARE / MANAGEMENT",
     shortDescription: "A desktop application designed to simplify student attendance registration, searching and record management.",
     overview: "A desktop application designed to simplify student attendance registration, searching and record management.",
+    problem: "Manual attendance reporting is tedious, prone to recording errors, and time-consuming to audit at the end of the term.",
+    solution: "Designed a Tkinter desktop application with local SQLite database persistence, allowing fast check-in and one-click CSV exporting.",
+    role: "Solo Developer (GUI & Database Design)",
+    outcome: "Built a functional offline tool that eliminates manual spreadsheet errors and simplifies administrative auditing.",
     technologies: ["Python", "Tkinter", "SQLite", "Excel"],
     features: [
-      "Attendance registration",
-      "Student search",
-      "Record management",
-      "Data storage"
+      "Attendance registration grid",
+      "Student search and filtering",
+      "Record auditing database",
+      "One-click CSV report export"
     ],
-    learning: "Improved understanding of Python GUI development and structured data management.",
+    howItWorks: [
+      "Rosters are loaded dynamically from a local SQLite database.",
+      "Students are marked present/absent via an interactive grid dashboard.",
+      "Reports are generated showing daily and cumulative attendance statistics.",
+      "Export engine compiles attendance into CSV files."
+    ],
+    learning: "Improved understanding of Python GUI development and data management.",
     images: [
-      // "assets/images/projects/attendance-1.png",
-      // "assets/images/projects/attendance-2.png",
-      // "assets/images/projects/attendance-3.png"
+      "assets/images/projects/attendance-management.webp"
     ],
     repository: "",
     liveDemo: ""
@@ -97,18 +113,26 @@ export const projects = [
     category: "WEB DEVELOPMENT",
     shortDescription: "A web application for managing event registrations with user and administrative functionality.",
     overview: "A web application for managing event registrations with user and administrative functionality.",
+    problem: "Organizers lack a simple, unified platform to handle user registrations, view active lists, and export data without database overhead.",
+    solution: "Created a lightweight web portal using Flask and SQLite, complete with attendee registration flows and admin search portals.",
+    role: "Solo Developer (Backend & Database integration)",
+    outcome: "Delivered a lightweight web-portal matching attendee signup and database export requirements.",
     technologies: ["Python", "Flask", "SQLite", "Bootstrap", "CSV"],
     features: [
-      "User registration",
-      "Event management",
-      "Admin functionality",
-      "CSV export"
+      "User attendee signup portal",
+      "Event details panel",
+      "Admin search dashboard",
+      "Registration lists CSV export"
+    ],
+    howItWorks: [
+      "Users register for the event via a web form.",
+      "Data is validated and stored in a lightweight SQLite database.",
+      "Admins log in to view registrations and filter attendees.",
+      "Registration lists are exported to spreadsheets."
     ],
     learning: "Improved understanding of Flask-based web application architecture and database integration.",
     images: [
-      // "assets/images/projects/event-1.png",
-      // "assets/images/projects/event-2.png",
-      // "assets/images/projects/event-3.png"
+      "assets/images/projects/event-management.webp"
     ],
     repository: "",
     liveDemo: ""
@@ -119,16 +143,55 @@ export const projects = [
     category: "AI / MACHINE LEARNING",
     shortDescription: "An AI/ML-based project concept designed to recommend suitable crops using agricultural input data.",
     overview: "An AI/ML-based project concept designed to recommend suitable crops using agricultural input data.",
+    problem: "Farmers lack accessible tools to determine the most viable crop based on changing soil parameters (N, P, K) and environmental conditions.",
+    solution: "Designed an AI/ML concept that recommends crops based on soil metrics and weather inputs using a trained classification model workflow.",
+    role: "AI Researcher & Concept Developer",
+    outcome: "Researched classification model workflows for agricultural decision-making.",
     technologies: ["Python", "Machine Learning", "Data Processing"],
     features: [
-      "Agricultural input processing",
-      "Crop recommendation concept",
-      "Machine learning workflow"
+      "Agricultural input metrics monitoring",
+      "Crop compatibility evaluation",
+      "Machine learning classification model"
+    ],
+    howItWorks: [
+      "Soil sensors capture Nitrogen, Phosphorus, Potassium, temperature, and moisture levels.",
+      "Input metrics are processed through a python data pipeline.",
+      "A classification model evaluates parameter ranges against crop compatibility profiles.",
+      "System displays the best recommended crop with confidence metrics."
     ],
     learning: "Explored how machine learning can be applied to real-world agricultural decision-making.",
     images: [
-      // "assets/images/projects/crop-1.png",
-      // "assets/images/projects/crop-2.png"
+      "assets/images/projects/ai-crop-recommendation.webp"
+    ],
+    repository: "",
+    liveDemo: ""
+  },
+  {
+    id: 5,
+    title: "COLOR SORTING MACHINE",
+    category: "HARDWARE / ARDUINO / AUTOMATION",
+    shortDescription: "An automated physical machine concept built with Arduino Uno, TCS3200 color sensor, and servo motors to identify and sort items by color.",
+    overview: "An automated physical machine concept built with Arduino Uno, TCS3200 color sensor, and servo motors to identify and sort items by color.",
+    problem: "Sorting items on industrial assembly lines is repetitive and manual; modeling hardware prototypes helps learn embedded programming and actuators.",
+    solution: "Designed and built an automated physical sorting mechanism using an Arduino Uno microchip, TCS3200 sensor, and servo motors.",
+    role: "Solo Developer (Hardware & Embedded C++)",
+    outcome: "Successfully implemented a real-time hardware control loop combining optical sensors and precise actuator adjustments.",
+    technologies: ["Arduino Uno", "C++", "TCS3200 Sensor", "Servo Motor", "Hardware Automation"],
+    features: [
+      "Real-time automated control loop",
+      "TCS3200 color sensor calibration",
+      "Servo motor angular direction routing",
+      "Mechanical chute sorting system"
+    ],
+    howItWorks: [
+      "Items roll down a physical track, halting under a TCS3200 color sensor.",
+      "TCS3200 reads light frequencies reflecting off the item (Red, Green, Blue components).",
+      "Arduino processes incoming frequency values, classifying the matched color.",
+      "Arduino commands a servo motor actuator to rotate a physical chute to the target bin."
+    ],
+    learning: "Learned about hardware-software integration, PWM signals, sensor calibration, and electronic schematics.",
+    images: [
+      "assets/images/projects/color-sorting-machine.webp"
     ],
     repository: "",
     liveDemo: ""
@@ -163,3 +226,6 @@ export const socialLinks = {
   github: "https://github.com/Manikandan2815",
   email: "manikandanr2815@gmail.com"
 };
+
+// Certifications TODO Data Structure (Empty to prevent fabrication of unverified credentials)
+export const certifications = [];

@@ -282,6 +282,41 @@ export function initGlobalAnimations() {
   }
 
   // ==========================================
+  // SCENE 03.5: CERTIFICATIONS
+  // ==========================================
+  const certsSection = document.getElementById('certifications');
+  if (certsSection) {
+    const certGrid = certsSection.querySelector('.lg:col-span-8');
+    const certHeader = certsSection.querySelector('.lg:col-span-4');
+
+    if (certHeader && certGrid) {
+      gsap.from(certHeader.children, {
+        y: 40,
+        opacity: 0,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: certsSection,
+          start: "top 80%",
+          end: "top 50%",
+          scrub: 1
+        }
+      });
+
+      gsap.from(certGrid.children, {
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: certsSection,
+          start: "top 75%",
+          end: "top 45%",
+          scrub: 1
+        }
+      });
+    }
+  }
+
+  // ==========================================
   // SCENE 04: JOURNEY TIMELINE
   // ==========================================
   const journeyScene = document.getElementById('journey-scene');

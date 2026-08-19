@@ -38,7 +38,6 @@ export function renderNavigation(container) {
         <button id="menu-close-btn" aria-label="Close Menu" class="font-display text-xs tracking-[0.2em] text-[#F5F5F5] hover:text-[#39FF14] bg-[#141414] border border-[#1E1E1E] px-4 py-2 uppercase focus:outline-none focus:ring-1 focus:ring-[#39FF14]">CLOSE</button>
       </div>
       
-      <!-- Nav List -->
       <nav class="flex flex-col gap-6 md:gap-8 my-auto text-left max-w-4xl mx-auto w-full px-4 md:px-0">
         <div class="overflow-hidden">
           <a href="#hero" class="menu-item group flex items-baseline font-display text-4xl md:text-7xl font-black text-[#F5F5F5] hover:text-[#39FF14] transition-colors tracking-tight py-2 min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#39FF14] px-2">
@@ -56,13 +55,18 @@ export function renderNavigation(container) {
           </a>
         </div>
         <div class="overflow-hidden">
-          <a href="#journey" class="menu-item group flex items-baseline font-display text-4xl md:text-7xl font-black text-[#F5F5F5] hover:text-[#39FF14] transition-colors tracking-tight py-2 min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#39FF14] px-2">
-            <span class="font-mono text-xs md:text-sm text-[#9A9A9A] group-hover:text-[#39FF14] mr-6">04 —</span> JOURNEY
+          <a href="#certifications" class="menu-item group flex items-baseline font-display text-4xl md:text-7xl font-black text-[#F5F5F5] hover:text-[#39FF14] transition-colors tracking-tight py-2 min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#39FF14] px-2">
+            <span class="font-mono text-xs md:text-sm text-[#9A9A9A] group-hover:text-[#39FF14] mr-6">04 —</span> CERTIFICATIONS
           </a>
         </div>
         <div class="overflow-hidden">
-          <a href="#contact" class="menu-item group flex items-baseline font-display text-4xl md:text-7xl font-black text-[#F5F5F5] hover:text-[#39FF14] transition-colors tracking-tight py-2 min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#39FF14] px-2">
-            <span class="font-mono text-xs md:text-sm text-[#9A9A9A] group-hover:text-[#39FF14] mr-6">05 —</span> CONTACT
+          <a href="#journey-scene" class="menu-item group flex items-baseline font-display text-4xl md:text-7xl font-black text-[#F5F5F5] hover:text-[#39FF14] transition-colors tracking-tight py-2 min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#39FF14] px-2">
+            <span class="font-mono text-xs md:text-sm text-[#9A9A9A] group-hover:text-[#39FF14] mr-6">05 —</span> JOURNEY
+          </a>
+        </div>
+        <div class="overflow-hidden">
+          <a href="#contact-scene" class="menu-item group flex items-baseline font-display text-4xl md:text-7xl font-black text-[#F5F5F5] hover:text-[#39FF14] transition-colors tracking-tight py-2 min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#39FF14] px-2">
+            <span class="font-mono text-xs md:text-sm text-[#9A9A9A] group-hover:text-[#39FF14] mr-6">06 —</span> CONTACT
           </a>
         </div>
       </nav>
