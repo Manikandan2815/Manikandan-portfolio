@@ -197,3 +197,32 @@ export function animateHeroEntrance() {
       });
     });
 }
+
+
+/**
+ * MICRO-UPGRADE: Cinematic Portrait Mouse Parallax
+ * Adds subtle 3D tilt + green edge glow on mouse movement.
+ * Does NOT change any existing layout, positioning, or animations.
+ */
+export function initPortraitParallax() {
+  const container = document.querySelector('.portrait-container');
+  const wrapper = document.querySelector('.portrait-image-wrapper');
+  if (!container || !wrapper || window.innerWidth < 1024) return;
+
+  const maxTilt = 4; // degrees — very subtle
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    const rotateY = x * maxTilt;
+    const rotateX = -y * maxTilt;
+
+    wrapper.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.01)`;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    wrapper.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+  });
+}

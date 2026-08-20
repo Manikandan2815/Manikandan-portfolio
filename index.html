@@ -1,78 +1,159 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="Manikandan.R â€” Third-year AI & Data Science undergraduate focused on software development, AI-powered applications, and building meaningful digital products.">
+
+  <meta name="description" content="Manikandan.R — Third-year AI & Data Science undergraduate focused on software development, AI-powered applications, and building meaningful digital products.">
+
   <meta name="author" content="Manikandan.R">
+
   <meta name="theme-color" content="#0A0A0A">
+
   <link rel="canonical" href="https://your-portfolio-domain.com/">
+
   
+
   <!-- Open Graph Metadata -->
-  <meta property="og:title" content="Manikandan.R â€” AI & Data Science Ã— Software Development">
+
+  <meta property="og:title" content="Manikandan.R — AI & Data Science × Software Development">
+
   <meta property="og:description" content="A premium cinematic developer portfolio. Exploring AI, Data Science, and Full-Stack Software Development.">
+
   <meta property="og:type" content="website">
+
   <meta property="og:url" content="https://your-portfolio-domain.com/">
+
   <meta property="og:image" content="https://your-portfolio-domain.com/assets/images/manikandan.jpg">
+
   
-  <title>Manikandan.R | AI & Data Science Ã— Software Development</title>
+
+  <title>Manikandan.R | AI & Data Science × Software Development</title>
+
   
+
   <!-- Tailwind CSS Play CDN -->
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
+
     tailwind.config = {
+
       theme: {
+
         extend: {
+
           colors: {
+
             accent: '#39FF14',
+
             background: '#0A0A0A',
+
             charcoal: '#141414',
+
             graphite: '#1E1E1E',
+
           },
+
           fontFamily: {
+
             display: ['Outfit', 'sans-serif'],
+
             sans: ['Inter', 'sans-serif'],
+
             mono: ['Fira Code', 'monospace'],
+
           }
+
         }
+
       }
+
     }
+
   </script>
+
   
+
   <!-- GSAP & ScrollTrigger CDN -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   
+
   <!-- Lenis Smooth Scroll CDN -->
+
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
   
+
   <!-- Global Stylesheet & Font Loader -->
-  <link rel="stylesheet" href="styles.css?v=999">
+
+  <link rel="stylesheet" href="styles.css?v=1000">
+
   
+
   <!-- Favicon Placeholder (Bypass 404 logs) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>âš¡</text></svg>">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
 </head>
+
 <body class="bg-[#0A0A0A] text-[#F5F5F5] overflow-x-hidden antialiased">
+  <!-- Global 3D Background Layer (z-index: 0, pointer-events: none) -->
+  <div id="webgl-global-bg" aria-hidden="true"></div>
+
+
+
 
   <!-- Cinematic Background Textures -->
+
   <div class="grain-overlay" aria-hidden="true"></div>
+
   <div class="dot-grid" aria-hidden="true"></div>
 
+
+
   <!-- Mounting Container Hooks for Component Nodes -->
+
   <div id="loader" class="relative z-50"></div>
+
   <div id="nav-mount" class="relative z-40"></div>
+
   
+
   <main class="relative z-10 w-full flex flex-col items-center">
+
     <div id="hero-mount" class="w-full"></div>
+
     <div id="about-mount" class="w-full"></div>
+
     <div id="skills-mount" class="w-full"></div>
+
     <div id="projects-mount" class="w-full"></div>
+
     <div id="certifications-mount" class="w-full"></div>
+
     <div id="journey-mount" class="w-full"></div>
+
     <div id="contact-mount" class="w-full"></div>
+
   </main>
 
+
+
   <!-- ES6 Modules Entrypoint -->
-  <script type="module" src="src/main.js?v=999"></script>
+
+  <script type="module" src="src/main.js?v=1000"></script>
+
 </body>
+
 </html>
+

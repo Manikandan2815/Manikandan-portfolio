@@ -1,173 +1,204 @@
 /**
- * WebGL Component — Phase F Cinematic Digital Intelligence Core
- * Lazy-loaded Three.js network visualizing AI, Data, Code, and Systems.
+ * WebGL Component — Global 3D Background Environment
+ * Multi-depth particle field with subtle geometric fragments.
+ * Renders into #webgl-global-bg (fixed, z-0, pointer-events: none).
+ * Falls back gracefully on mobile and reduced-motion.
  */
 
 export function initWebGL(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+  // Use the global background container instead of the hero-local one
+  const globalContainer = document.getElementById('webgl-global-bg');
+  if (!globalContainer) return;
 
-  // Graceful degradation: Disable for mobile and reduced motion
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const isMobile = window.innerWidth < 1024;
-  
-  if (motionQuery.matches || isMobile) {
-    console.log("[WebGL] Bypassed for mobile/reduced-motion. Rendering static fallback.");
-    container.innerHTML = '<div class="absolute inset-0 bg-[radial-gradient(circle,rgba(57,255,20,0.05)_0%,transparent_70%)]"></div>';
+
+  if (motionQuery.matches) {
+    console.log("[WebGL] Bypassed for reduced-motion.");
     return;
   }
 
-  // Lazy Load Three.js to preserve fast initial page render
-  const script = document.createElement('script');
-  script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-  script.onload = () => buildScene(container);
-  document.body.appendChild(script);
+  // Lazy Load Three.js
+  if (!window.THREE) {
+    const script = document.createElement('script');
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+    script.onload = () => buildGlobalScene(globalContainer);
+    document.body.appendChild(script);
+  } else {
+    buildGlobalScene(globalContainer);
+  }
 }
 
-function buildScene(container) {
+function buildGlobalScene(container) {
   const THREE = window.THREE;
-  
-  // 1. Scene Setup
+  const isMobile = window.innerWidth < 1024;
+
+  // 1. Scene
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0A0A0A, 0.0012); // Deep atmospheric fade
+  scene.fog = new THREE.FogExp2(0x0A0A0A, isMobile ? 0.002 : 0.0008);
 
-  // 2. Camera Setup
+  // 2. Camera
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
-  camera.position.z = 400;
-  camera.position.x = 0;
-  camera.position.y = 0;
+  camera.position.set(0, 0, 500);
 
-  // 3. Renderer Setup
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap pixel ratio for performance
+  // 3. Renderer
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !isMobile, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  // Fade in canvas smoothly
-  gsap.to(renderer.domElement, { opacity: 1, duration: 2, ease: "power2.inOut" });
+  // Fade in the global background
+  gsap.to(container, { opacity: 1, duration: 3, ease: "power2.inOut" });
 
-  // 4. Data Nodes (Particles)
-  const particleCount = 180;
-  const geometry = new THREE.BufferGeometry();
-  const vertices = [];
-  
-  for (let i = 0; i < particleCount; i++) {
-    // Generate spherical distribution for organic tech feel
-    const r = 400 * Math.cbrt(Math.random());
+  // ── LAYER 1: FAR BACKGROUND — Faint star field ──
+  const starCount = isMobile ? 200 : 600;
+  const starGeo = new THREE.BufferGeometry();
+  const starPositions = [];
+  for (let i = 0; i < starCount; i++) {
+    starPositions.push(
+      (Math.random() - 0.5) * 2000,
+      (Math.random() - 0.5) * 2000,
+      (Math.random() - 0.5) * 1500
+    );
+  }
+  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPositions, 3));
+  const starMat = new THREE.PointsMaterial({
+    color: 0xFFFFFF,
+    size: 1,
+    transparent: true,
+    opacity: 0.15,
+    blending: THREE.AdditiveBlending
+  });
+  const stars = new THREE.Points(starGeo, starMat);
+  scene.add(stars);
+
+  // ── LAYER 2: MIDGROUND — Subtle green data nodes ──
+  const nodeCount = isMobile ? 80 : 200;
+  const nodeGeo = new THREE.BufferGeometry();
+  const nodePositions = [];
+  for (let i = 0; i < nodeCount; i++) {
+    const r = 300 + Math.random() * 400;
     const theta = Math.random() * 2 * Math.PI;
     const phi = Math.acos(2 * Math.random() - 1);
-    
-    const x = r * Math.sin(phi) * Math.cos(theta);
-    const y = r * Math.sin(phi) * Math.sin(theta);
-    const z = r * Math.cos(phi);
-    
-    vertices.push(x, y, z);
+    nodePositions.push(
+      r * Math.sin(phi) * Math.cos(theta),
+      r * Math.sin(phi) * Math.sin(theta),
+      r * Math.cos(phi)
+    );
   }
-  
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-
-  const material = new THREE.PointsMaterial({
-    color: 0x39FF14, // Accent Green
-    size: 2.5,
+  nodeGeo.setAttribute('position', new THREE.Float32BufferAttribute(nodePositions, 3));
+  const nodeMat = new THREE.PointsMaterial({
+    color: 0x39FF14,
+    size: isMobile ? 1.5 : 2,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.25,
     blending: THREE.AdditiveBlending
   });
-  
-  const particles = new THREE.Points(geometry, material);
-  scene.add(particles);
+  const nodes = new THREE.Points(nodeGeo, nodeMat);
+  scene.add(nodes);
 
-  // 5. Connections (LineSegments)
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: 0x9A9A9A, // Secondary text color
-    transparent: true,
-    opacity: 0.12,
-    blending: THREE.AdditiveBlending
-  });
-
-  const lineGeo = new THREE.BufferGeometry();
-  const linePos = [];
-  
-  // Connect nearest neighbors to form network
-  for(let i = 0; i < particleCount; i++) {
-    for(let j = i + 1; j < particleCount; j++) {
-       const dx = vertices[i*3] - vertices[j*3];
-       const dy = vertices[i*3+1] - vertices[j*3+1];
-       const dz = vertices[i*3+2] - vertices[j*3+2];
-       const dist = dx*dx + dy*dy + dz*dz;
-       
-       if(dist < 22000) { // Connection threshold
-         linePos.push(vertices[i*3], vertices[i*3+1], vertices[i*3+2]);
-         linePos.push(vertices[j*3], vertices[j*3+1], vertices[j*3+2]);
-       }
+  // ── LAYER 2.5: Thin connection lines between nearby midground nodes ──
+  if (!isMobile) {
+    const lineMat = new THREE.LineBasicMaterial({
+      color: 0x39FF14,
+      transparent: true,
+      opacity: 0.04,
+      blending: THREE.AdditiveBlending
+    });
+    const linePositions = [];
+    for (let i = 0; i < nodeCount; i++) {
+      for (let j = i + 1; j < nodeCount; j++) {
+        const dx = nodePositions[i*3] - nodePositions[j*3];
+        const dy = nodePositions[i*3+1] - nodePositions[j*3+1];
+        const dz = nodePositions[i*3+2] - nodePositions[j*3+2];
+        const dist = dx*dx + dy*dy + dz*dz;
+        if (dist < 15000) {
+          linePositions.push(
+            nodePositions[i*3], nodePositions[i*3+1], nodePositions[i*3+2],
+            nodePositions[j*3], nodePositions[j*3+1], nodePositions[j*3+2]
+          );
+        }
+      }
+    }
+    if (linePositions.length > 0) {
+      const lineGeo = new THREE.BufferGeometry();
+      lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+      const lines = new THREE.LineSegments(lineGeo, lineMat);
+      scene.add(lines);
     }
   }
-  lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePos, 3));
-  const lines = new THREE.LineSegments(lineGeo, lineMaterial);
-  scene.add(lines);
 
-  // Create a unified group for easy rotation
-  const coreGroup = new THREE.Group();
-  coreGroup.add(particles);
-  coreGroup.add(lines);
-  
-  // Shift right asymmetrically to sit behind portrait
-  coreGroup.position.x = window.innerWidth > 1440 ? 150 : 100;
-  scene.add(coreGroup);
+  // ── LAYER 3: BACKGROUND OBJECTS — Faint wireframe geometries ──
+  const geoGroup = new THREE.Group();
+  if (!isMobile) {
+    const shapes = [
+      new THREE.IcosahedronGeometry(30, 0),
+      new THREE.OctahedronGeometry(25, 0),
+      new THREE.TetrahedronGeometry(20, 0),
+    ];
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x39FF14,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.03
+    });
 
-  // 6. Interactions (Mouse + Scroll)
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetX = 0;
-  let targetY = 0;
-  
-  const windowHalfX = window.innerWidth / 2;
-  const windowHalfY = window.innerHeight / 2;
+    shapes.forEach((geo, i) => {
+      const mesh = new THREE.Mesh(geo, wireMat);
+      mesh.position.set(
+        (Math.random() - 0.5) * 600,
+        (Math.random() - 0.5) * 400,
+        -200 - Math.random() * 300
+      );
+      mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+      geoGroup.add(mesh);
+    });
+    scene.add(geoGroup);
+  }
 
+  // ── INTERACTIONS ──
+  let mouseX = 0, mouseY = 0;
   document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX - windowHalfX);
-    mouseY = (e.clientY - windowHalfY);
+    mouseX = (e.clientX - window.innerWidth / 2) * 0.003;
+    mouseY = (e.clientY - window.innerHeight / 2) * 0.003;
   }, { passive: true });
 
-  // Use Lenis scroll position if available, otherwise fallback to native
   let scrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    scrollY = window.scrollY;
-  }, { passive: true });
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
-  // 7. Resize Handler
+  // ── RESIZE ──
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    
-    // Recalculate asymmetric position
-    coreGroup.position.x = window.innerWidth > 1440 ? 150 : (window.innerWidth > 1024 ? 100 : 0);
   });
 
-  // 8. Render Loop
+  // ── RENDER LOOP ──
   const animate = () => {
     requestAnimationFrame(animate);
 
-    // Smooth mouse target interpolation
-    targetX = mouseX * 0.001;
-    targetY = mouseY * 0.001;
+    // Very slow organic rotation (barely noticeable)
+    stars.rotation.y += 0.00005;
+    stars.rotation.x += 0.00003;
 
-    // Organic continuous rotation
-    coreGroup.rotation.y += 0.001;
-    coreGroup.rotation.x += 0.0005;
+    nodes.rotation.y += 0.0002;
+    nodes.rotation.x += 0.0001;
 
-    // Parallax response to mouse
-    coreGroup.rotation.y += 0.05 * (targetX - coreGroup.rotation.y);
-    coreGroup.rotation.x += 0.05 * (targetY - coreGroup.rotation.x);
+    // Wireframe shapes drift
+    geoGroup.children.forEach((mesh, i) => {
+      mesh.rotation.x += 0.0003 * (i + 1);
+      mesh.rotation.y += 0.0002 * (i + 1);
+    });
 
-    // Scroll depth interaction (pushes core deeper and translates up slightly)
-    const scrollFactor = scrollY * 0.5;
-    camera.position.z = 400 + scrollFactor;
-    camera.position.y = -scrollY * 0.2;
+    // Mouse parallax (5-15px equivalent, extremely subtle)
+    camera.position.x += (mouseX * 8 - camera.position.x) * 0.02;
+    camera.position.y += (-mouseY * 8 - camera.position.y) * 0.02;
+
+    // Scroll depth (slow camera push)
+    camera.position.z = 500 + scrollY * 0.08;
+    camera.lookAt(0, 0, 0);
 
     renderer.render(scene, camera);
   };
-  
+
   animate();
 }
