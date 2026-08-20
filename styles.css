@@ -288,3 +288,27 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* ==========================================================================
+   MICRO-UPGRADE 2: Portrait 3D Utilities
+   ========================================================================== */
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.-translate-z-10 {
+  transform: translateZ(-10px);
+}
+
+.-translate-z-20 {
+  transform: translateZ(-30px);
+}
+
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+.translate-z-30 {
+  transform: translateZ(40px);
+}

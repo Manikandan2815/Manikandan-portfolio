@@ -16,39 +16,72 @@ export function renderHero(container) {
       <div id="webgl-canvas-container" class="absolute inset-0 z-0 pointer-events-none flex items-center justify-center opacity-70"></div>
       
       <!-- Editorial Cinematic Portrait Frame -->
-      <div class="portrait-container absolute lg:right-[3%] top-[10%] w-full lg:w-[40vw] max-w-[500px] h-[55vh] lg:h-[75vh] z-0 lg:pointer-events-auto group mt-8 lg:mt-0 px-6 lg:px-0">
+      <!-- Cinematic 3D Portrait Installation -->
+      <div class="portrait-container absolute lg:right-[3%] top-[10%] w-full lg:w-[40vw] max-w-[500px] h-[55vh] lg:h-[75vh] z-0 lg:pointer-events-auto group mt-8 lg:mt-0 px-6 lg:px-0" style="perspective: 1200px;">
         
-        <!-- Desktop Editorial Frame Details (Hidden on Mobile) -->
-        <div class="hidden lg:block absolute top-[15%] -left-8 w-16 h-[1px] bg-[#333] z-20 portrait-meta transition-transform duration-700 group-hover:-translate-x-2"></div>
-        <div class="hidden lg:block absolute bottom-[15%] -right-4 w-12 h-[1px] bg-[#333] z-20 portrait-meta transition-transform duration-700 group-hover:translate-x-2"></div>
-        <div class="hidden lg:block absolute -top-4 left-[25%] w-[1px] h-12 bg-[#333] z-20 portrait-meta"></div>
+        <div class="portrait-3d-scene relative w-full h-full transform-style-3d transition-transform duration-700 ease-out">
+          
+          <!-- LAYER 1: BACK DEPTH (Dark glass plane + shadow) -->
+          <div class="portrait-layer-1 absolute inset-0 bg-[#050505]/40 backdrop-blur-md rounded-sm border border-[#39FF14]/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] transform -translate-z-20 scale-95 transition-all duration-700"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,255,20,0.03)_0%,transparent_60%)] transform -translate-z-20 blur-xl"></div>
 
-        <div class="hidden lg:block absolute top-20 -left-12 font-mono text-[9px] text-[#9A9A9A] tracking-[0.4em] uppercase z-20 portrait-meta -rotate-90 origin-top-right transition-colors group-hover:text-[#F5F5F5]">
-          01 / PORTRAIT
-        </div>
-        <div class="hidden lg:block absolute bottom-8 right-6 font-mono text-[8px] text-[#555] tracking-[0.3em] uppercase z-20 portrait-meta mix-blend-difference">
-          SYS.ACT // IDX: 2815
-        </div>
-        
-        <!-- Image Masking Wrapper -->
-        <div class="portrait-image-wrapper relative w-full h-full overflow-hidden bg-[#050505] transition-transform duration-700 z-10" style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);">
-          
-          <img 
-            src="assets/images/manikandan.jpg" 
-            alt="Manikandan.R Portrait" 
-            class="hero-portrait w-full h-full object-cover object-top opacity-0 z-0 scale-105 transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] lg:group-hover:scale-100"
-            style="filter: grayscale(70%) contrast(1.15) brightness(0.85);"
-          >
-          
-          <!-- Soft vignette & grain -->
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,5,5,0.85)_100%)] z-20 pointer-events-none"></div>
-          
-          <!-- Hover Text Indicator -->
-          <div class="hidden lg:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none">
-            <span class="font-mono text-[9px] tracking-[0.3em] text-[#F5F5F5] uppercase px-4 py-2 bg-[#0A0A0A]/40 backdrop-blur-md border border-[#1E1E1E] scale-95 group-hover:scale-100 transition-transform duration-500">
-              VIEW
-            </span>
+          <!-- LAYER 2: TECHNICAL FRAME (Thin asymmetric lines + markers) -->
+          <div class="portrait-layer-2 absolute inset-[-10px] pointer-events-none transform -translate-z-10 transition-transform duration-700">
+            <!-- Frame corners -->
+            <div class="absolute top-0 left-0 w-8 h-[1px] bg-[#39FF14]/40"></div>
+            <div class="absolute top-0 left-0 w-[1px] h-8 bg-[#39FF14]/40"></div>
+            
+            <div class="absolute bottom-0 right-0 w-8 h-[1px] bg-[#39FF14]/40"></div>
+            <div class="absolute bottom-0 right-0 w-[1px] h-8 bg-[#39FF14]/40"></div>
+            
+            <div class="absolute top-1/3 -left-4 w-4 h-[1px] bg-[#333]"></div>
+            <div class="absolute bottom-1/3 -right-4 w-4 h-[1px] bg-[#333]"></div>
+            
+            <div class="absolute -top-4 left-1/4 w-[1px] h-4 bg-[#333]"></div>
+            
+            <!-- Floating Data Labels -->
+            <div class="absolute top-24 -left-16 font-mono text-[8px] text-[#9A9A9A] tracking-[0.4em] uppercase -rotate-90 origin-top-right transition-colors group-hover:text-[#F5F5F5] drop-shadow-md">
+              01 / PORTRAIT
+            </div>
+            <div class="absolute bottom-4 right-8 font-mono text-[7px] text-[#39FF14]/60 tracking-[0.3em] uppercase">
+              SYS.ACT // IDX: 2815
+            </div>
+            
+            <!-- Subtle floating node -->
+            <div class="absolute top-[20%] right-[-5%] w-1 h-1 rounded-full bg-[#39FF14] shadow-[0_0_8px_rgba(57,255,20,0.6)]"></div>
           </div>
+
+          <!-- LAYER 3: PORTRAIT (Actual Image wrapper) -->
+          <div class="portrait-image-wrapper relative w-full h-full overflow-hidden bg-[#050505] transform translate-z-10 transition-all duration-700 ease-out shadow-[0_25px_50px_rgba(0,0,0,0.6),0_0_0_1px_rgba(57,255,20,0.05)] group-hover:shadow-[0_35px_70px_rgba(0,0,0,0.7),0_0_1px_rgba(57,255,20,0.15),0_0_30px_rgba(57,255,20,0.04)]" style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);">
+            
+            <img 
+              src="assets/images/manikandan.jpg" 
+              alt="Manikandan.R Portrait" 
+              class="hero-portrait w-full h-full object-cover object-top opacity-0 z-0 scale-105 transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] lg:group-hover:scale-100"
+              style="filter: grayscale(70%) contrast(1.15) brightness(0.85);"
+            >
+            
+            <!-- Soft vignette & grain -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,5,5,0.85)_100%)] z-20 pointer-events-none transition-opacity duration-700 group-hover:opacity-80"></div>
+            
+            <!-- Interactive Rim Light (Moves with JS) -->
+            <div class="portrait-rim-light absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(57,255,20,0.15)_0%,transparent_50%)] z-20 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 mix-blend-screen"></div>
+
+          </div>
+
+          <!-- LAYER 4: FOREGROUND DETAILS (Particles floating over) -->
+          <div class="portrait-layer-4 absolute inset-0 pointer-events-none transform translate-z-30 z-30 transition-transform duration-700">
+             <div class="hidden lg:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span class="font-mono text-[9px] tracking-[0.3em] text-[#F5F5F5] uppercase px-4 py-2 bg-[#0A0A0A]/60 backdrop-blur-md border border-[#39FF14]/20 scale-95 group-hover:scale-100 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                  VIEW
+                </span>
+             </div>
+             
+             <!-- Floating markers in front of image -->
+             <div class="absolute bottom-1/4 left-[-15px] text-[#39FF14]/40 font-mono text-[7px] rotate-90">+ 34.02</div>
+             <div class="absolute top-[10%] right-[10%] w-[2px] h-[2px] bg-[#F5F5F5]/40"></div>
+          </div>
+          
         </div>
       </div>
       
@@ -206,23 +239,39 @@ export function animateHeroEntrance() {
  */
 export function initPortraitParallax() {
   const container = document.querySelector('.portrait-container');
-  const wrapper = document.querySelector('.portrait-image-wrapper');
-  if (!container || !wrapper || window.innerWidth < 1024) return;
+  const scene = document.querySelector('.portrait-3d-scene');
+  const rimLight = document.querySelector('.portrait-rim-light');
+  if (!container || !scene || window.innerWidth < 1024) return;
 
-  const maxTilt = 4; // degrees — very subtle
+  const maxTilt = 5; // degrees
 
   container.addEventListener('mousemove', (e) => {
     const rect = container.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    const x = (e.clientX - rect.left) / rect.width; // 0 to 1
+    const y = (e.clientY - rect.top) / rect.height; // 0 to 1
+    
+    const centeredX = x - 0.5; // -0.5 to 0.5
+    const centeredY = y - 0.5; // -0.5 to 0.5
 
-    const rotateY = x * maxTilt;
-    const rotateX = -y * maxTilt;
+    const rotateY = centeredX * maxTilt * 2;
+    const rotateX = -centeredY * maxTilt * 2;
 
-    wrapper.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.01)`;
+    // Move the entire 3D scene
+    scene.style.transform = 
+otateY(deg) rotateX(deg) translateZ(10px);
+    
+    // Move the rim light to follow the mouse
+    if (rimLight) {
+      rimLight.style.background = 
+adial-gradient(circle at % %, rgba(57,255,20,0.15) 0%, transparent 50%);
+    }
   });
 
   container.addEventListener('mouseleave', () => {
-    wrapper.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+    scene.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
+    if (rimLight) {
+      rimLight.style.background = 
+adial-gradient(circle at 50% 0%, rgba(57,255,20,0.15) 0%, transparent 50%);
+    }
   });
 }
