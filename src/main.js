@@ -1,23 +1,23 @@
-/**
- * Manikandan.R — Portfolio Bootstrapper (Phase 2)
+﻿/**
+ * Manikandan.R â€” Portfolio Bootstrapper (Phase 2)
  * Coordinates ES6 modules, handles mounting, checking accessibility preferences,
  * initializes Lenis, and binds loader outcomes to Hero entry sequences.
  */
-import { renderLoading, startLoadingAnimation } from './components/loading.js?v=24';
-import { renderNavigation, setupNavigationInteractions } from './components/navigation.js?v=24';
-import { renderHero, animateHeroEntrance } from './components/hero.js?v=24';
-import { renderAbout } from './components/about.js?v=24';
-import { renderSkills } from './components/skills.js?v=24';
-import { renderProjects } from './components/projects.js?v=24';
-import { renderJourney } from './components/journey.js?v=24';
-import { renderCertifications } from './components/certifications.js?v=24';
-import { renderContact, setupContactInteractions } from './components/contact.js?v=24';
+import { renderLoading, startLoadingAnimation } from './components/loading.js?v=99';
+import { renderNavigation, setupNavigationInteractions } from './components/navigation.js?v=99';
+import { renderHero, animateHeroEntrance } from './components/hero.js?v=99';
+import { renderAbout } from './components/about.js?v=99';
+import { renderSkills } from './components/skills.js?v=99';
+import { renderProjects } from './components/projects.js?v=99';
+import { renderJourney } from './components/journey.js?v=99';
+import { renderCertifications } from './components/certifications.js?v=99';
+import { renderContact, setupContactInteractions } from './components/contact.js?v=99';
 
-import { initSmoothScroll } from './utils/smooth-scroll.js?v=24';
-import { initGlobalAnimations } from './utils/animations.js?v=24';
-import { initWebGL } from './components/webgl.js?v=24';
-import { initCursor } from './utils/cursor.js?v=24';
-import { initMagnetics } from './utils/magnetic.js?v=24';
+import { initSmoothScroll } from './utils/smooth-scroll.js?v=99';
+import { initGlobalAnimations } from './utils/animations.js?v=99';
+import { initWebGL } from './components/webgl.js?v=99';
+import { initCursor } from './utils/cursor.js?v=99';
+import { initMagnetics } from './utils/magnetic.js?v=99';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("[Portfolio Bootstrapper] Initializing Phase 2 layout elements...");
