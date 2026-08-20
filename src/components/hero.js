@@ -243,35 +243,30 @@ export function initPortraitParallax() {
   const rimLight = document.querySelector('.portrait-rim-light');
   if (!container || !scene || window.innerWidth < 1024) return;
 
-  const maxTilt = 5; // degrees
+  const maxTilt = 5;
 
   container.addEventListener('mousemove', (e) => {
     const rect = container.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width; // 0 to 1
-    const y = (e.clientY - rect.top) / rect.height; // 0 to 1
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
     
-    const centeredX = x - 0.5; // -0.5 to 0.5
-    const centeredY = y - 0.5; // -0.5 to 0.5
+    const centeredX = x - 0.5;
+    const centeredY = y - 0.5;
 
     const rotateY = centeredX * maxTilt * 2;
     const rotateX = -centeredY * maxTilt * 2;
 
-    // Move the entire 3D scene
-    scene.style.transform = 
-otateY(deg) rotateX(deg) translateZ(10px);
+    scene.style.transform = 'rotateY(' + rotateY + 'deg) rotateX(' + rotateX + 'deg) translateZ(10px)';
     
-    // Move the rim light to follow the mouse
     if (rimLight) {
-      rimLight.style.background = 
-adial-gradient(circle at % %, rgba(57,255,20,0.15) 0%, transparent 50%);
+      rimLight.style.background = 'radial-gradient(circle at ' + (x * 100) + '% ' + (y * 100) + '%, rgba(57,255,20,0.15) 0%, transparent 50%)';
     }
   });
 
   container.addEventListener('mouseleave', () => {
     scene.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
     if (rimLight) {
-      rimLight.style.background = 
-adial-gradient(circle at 50% 0%, rgba(57,255,20,0.15) 0%, transparent 50%);
+      rimLight.style.background = 'radial-gradient(circle at 50% 0%, rgba(57,255,20,0.15) 0%, transparent 50%)';
     }
   });
 }
